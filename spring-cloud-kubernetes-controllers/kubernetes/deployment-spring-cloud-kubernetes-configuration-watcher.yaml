@@ -62,6 +62,15 @@ items:
           - name: spring-cloud-kubernetes-configuration-watcher
             image: springcloud/spring-cloud-kubernetes-configuration-watcher:3.3.0-SNAPSHOT
             imagePullPolicy: IfNotPresent
+            env:
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_KUBERNETES_CONFIGURATION_WATCHER
+                value: DEBUG
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_KUBERNETES_CLIENT_CONFIG_RELOAD
+                value: DEBUG
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_KUBERNETES_COMMONS_CONFIG_RELOAD
+                value: DEBUG
+              - name: SPRING_CLOUD_KUBERNETES_CONFIGURATION_WATCHER_REFRESHDELAY
+                value: "10"                
             readinessProbe:
               httpGet:
                 port: 8888
