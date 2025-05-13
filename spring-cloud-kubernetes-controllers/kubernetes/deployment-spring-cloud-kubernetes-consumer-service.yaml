@@ -81,3 +81,9 @@ items:
                 path: /actuator/health/liveness
             ports:
             - containerPort: 8080
+            volumeMounts:
+            - name: log-volume
+              mountPath: /workspace/logs          
+          volumes:
+          - name: log-volume
+            emptyDir: {}

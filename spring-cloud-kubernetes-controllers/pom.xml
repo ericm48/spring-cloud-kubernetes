@@ -22,7 +22,7 @@
 	<profiles>
 		
 		<profile>
-				<id>generate-jar</id>
+				<id>build-jar</id>
 
 				<activation>
         	<activeByDefault>true</activeByDefault>
@@ -52,7 +52,7 @@
 		</profile>		
 		
 		<profile>
-				<id>generate-img</id>
+				<id>build-img</id>
 
 				<activation>
         	<activeByDefault>false</activeByDefault>
@@ -82,6 +82,7 @@
 							<configuration>
 								<image>
 									<name>${env.IMAGE}</name>
+									<builder>paketobuildpacks/builder-jammy-base:latest</builder>									
 								</image>
 								<goal>build-image</goal>
 							</configuration>
