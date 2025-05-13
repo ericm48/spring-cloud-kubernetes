@@ -11,6 +11,20 @@ buildNumber.properties
 .mvn/timing.properties
 .flattened-pom.xml
 
+#################
+## General Logging
+#################
+*.log
+*.log.*
+*.logs
+*.logs.*
+
+**/log
+**/log.*
+
+**/logs
+**/logs/*
+**/logs./*
 
 ### Java template
 *.class

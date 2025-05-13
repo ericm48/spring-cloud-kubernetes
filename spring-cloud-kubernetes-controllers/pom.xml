@@ -26,10 +26,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>3.2.1</version>
-				
-				<!--
-				<version>3.3.0</version>
-				-->
 
 				<executions>
 					<execution>
@@ -41,6 +37,7 @@
 				</executions>
 			</plugin>
 
+			<!--
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -78,7 +75,8 @@
 					</execution>
 				</executions>
 			</plugin>
-
+			-->
+			
 		</plugins>
 
 	</build>

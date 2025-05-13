@@ -18,11 +18,16 @@ package com.eric.microservices.consumerservice;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import com.eric.microservices.config.ConfigProperties;
 
 /**
  * @author Eric Manley
  */
+
 @SpringBootApplication
+@EnableConfigurationProperties(ConfigProperties.class)
 public class ConsumerServiceApplication {
 
 	public static void main(String[] args) {

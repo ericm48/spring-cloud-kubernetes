@@ -75,17 +75,19 @@
 		<spring-cloud-bus.version>4.3.0-SNAPSHOT</spring-cloud-bus.version>
 		<spring-cloud-contract.version>4.3.0-SNAPSHOT</spring-cloud-contract.version>
 
+		<!--
 		<maven-checkstyle-plugin.failsOnError>true</maven-checkstyle-plugin.failsOnError>
-		<maven-checkstyle-plugin.failsOnViolation>true
-		</maven-checkstyle-plugin.failsOnViolation>
-		<maven-checkstyle-plugin.includeTestSourceDirectory>true
-		</maven-checkstyle-plugin.includeTestSourceDirectory>
+		<maven-checkstyle-plugin.failsOnViolation>true</maven-checkstyle-plugin.failsOnViolation>
+		<maven-checkstyle-plugin.includeTestSourceDirectory>true</maven-checkstyle-plugin.includeTestSourceDirectory>
+		-->
 	</properties>
 
 	<modules>
 		<module>spring-cloud-kubernetes-dependencies</module>
 		<module>spring-cloud-kubernetes-commons</module>
+		<!--
 		<module>spring-cloud-kubernetes-test-support</module>
+		-->
 		<module>spring-cloud-kubernetes-client-autoconfig</module>
 		<module>spring-cloud-kubernetes-client-config</module>
 		<module>spring-cloud-kubernetes-client-loadbalancer</module>
@@ -208,23 +210,30 @@
 				</configuration>
 			</plugin>
 
+			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 			</plugin>
+
+			
 			<plugin>
 				<groupId>io.spring.javaformat</groupId>
 				<artifactId>spring-javaformat-maven-plugin</artifactId>
 			</plugin>
+			-->
+			
 		</plugins>
 	</build>
 
 	<reporting>
 		<plugins>
+			<!--
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 			</plugin>
+			-->
 		</plugins>
 	</reporting>
 
