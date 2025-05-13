@@ -14,8 +14,3 @@ management:
     web:
       exposure:
         include: "*"
----
-#timeout:
-#  settings:
-#    read-timeout-millis: 3333
-#    connection-timeout-millis: 4444
