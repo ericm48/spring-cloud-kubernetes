@@ -25,12 +25,16 @@
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-build</artifactId>
+		<version>4.2.1</version>
+		
+		<!--
 		<version>4.3.0-SNAPSHOT</version>
+		-->
 		<relativePath/>
 	</parent>
 
 	<artifactId>spring-cloud-kubernetes</artifactId>
-	<version>3.3.0-SNAPSHOT</version>
+	<version>3.3.0-SNAPSHOT</version>	
 	<packaging>pom</packaging>
 	<name>Spring Cloud Kubernetes</name>
 
@@ -68,12 +72,26 @@
 		<!-- the reports in a directory: "surefire-reports/..." -->
 		<surefire-reports-directory>surefire-reports</surefire-reports-directory>
 		<failsafe-reports-directory>failsafe-reports</failsafe-reports-directory>
+
 		<!-- Dependency Versions -->
 		<mockito-inline.version>4.8.1</mockito-inline.version>
-		<spring-cloud-commons.version>4.3.0-SNAPSHOT</spring-cloud-commons.version>
+
+		<!--
+		<spring-cloud-commons.version>4.3.0-SNAPSHOT</spring-cloud-commons.version>		
 		<spring-cloud-config.version>4.3.0-SNAPSHOT</spring-cloud-config.version>
 		<spring-cloud-bus.version>4.3.0-SNAPSHOT</spring-cloud-bus.version>
 		<spring-cloud-contract.version>4.3.0-SNAPSHOT</spring-cloud-contract.version>
+		-->
+		
+		<!--
+			Gotta Watch This ONE!
+		-->	
+		<spring-cloud-kubernetes.version>3.2.2-SNAPSHOT</spring-cloud-kubernetes.version>
+				
+		<spring-cloud-commons.version>4.2.1</spring-cloud-commons.version>
+		<spring-cloud-config.version>4.2.1</spring-cloud-config.version>
+		<spring-cloud-bus.version>4.2.1</spring-cloud-bus.version>
+		<spring-cloud-contract.version>4.2.1</spring-cloud-contract.version>
 
 		<!--
 		<maven-checkstyle-plugin.failsOnError>true</maven-checkstyle-plugin.failsOnError>
@@ -85,9 +103,11 @@
 	<modules>
 		<module>spring-cloud-kubernetes-dependencies</module>
 		<module>spring-cloud-kubernetes-commons</module>
+		
 		<!--
 		<module>spring-cloud-kubernetes-test-support</module>
 		-->
+		
 		<module>spring-cloud-kubernetes-client-autoconfig</module>
 		<module>spring-cloud-kubernetes-client-config</module>
 		<module>spring-cloud-kubernetes-client-loadbalancer</module>
@@ -119,8 +139,13 @@
 
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-kubernetes-dependencies</artifactId>
+				<artifactId>spring-cloud-kubernetes-dependencies</artifactId>				
+			  <version>${spring-cloud-kubernetes.version}</version>			  
+			  
+			  <!--
 				<version>${project.version}</version>
+				-->			
+				
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
