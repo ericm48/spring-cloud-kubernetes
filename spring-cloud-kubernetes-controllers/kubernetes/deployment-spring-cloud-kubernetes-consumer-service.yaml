@@ -16,34 +16,7 @@ items:
       selector:
         app: spring-cloud-kubernetes-consumer-service
       type: ClusterIP
-  - apiVersion: v1
-    kind: ServiceAccount
-    metadata:
-      labels:
-        app: spring-cloud-kubernetes-consumer-service
-      name: spring-cloud-kubernetes-consumer-service
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: RoleBinding
-    metadata:
-      labels:
-        app: spring-cloud-kubernetes-consumer-service
-      name: spring-cloud-kubernetes-consumer-service:view
-    roleRef:
-      kind: Role
-      apiGroup: rbac.authorization.k8s.io
-      name: namespace-reader
-    subjects:
-      - kind: ServiceAccount
-        name: spring-cloud-kubernetes-consumer-service
-  - apiVersion: rbac.authorization.k8s.io/v1
-    kind: Role
-    metadata:
-      namespace: default
-      name: namespace-reader
-    rules:
-      - apiGroups: ["", "extensions", "apps"]
-        resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
-        verbs: ["get", "list", "watch"]
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -58,19 +31,40 @@ items:
             app: spring-cloud-kubernetes-consumer-service
         spec:
           serviceAccount: spring-cloud-kubernetes-consumer-service
+
+          securityContext:
+              runAsUser: 1002
+              runAsGroup: 1000
+              fsGroup: 1000  # Ensure this matches runAsGroup              
+
+#          initContainers:
+#          - name: take-data-dir-ownership
+#            image: alpine:3
+#            # Give 'cnb:1000' user (id cnb is 1002) 1000 is eric permissions a mounted volume      
+#            command:
+#            - chown
+#            - -R
+#            - 1002:1000
+#            - /data
+#            command:
+#           - ls
+#            - -latr
+#            - /data            
+
+#           volumeMounts:
+#           - name: data-dir
+#             mountPath: /data
+
           containers:
           - name: spring-cloud-kubernetes-consumer-service
-            image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.0-SNAPSHOT
+            image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.2-SNAPSHOT
             imagePullPolicy: IfNotPresent
+            
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
                 value: DEBUG                
-              - name: THE_SPRING_CONFIG
-                value: 'timeout.settings.connectionTimeoutMillis=1111 timeout.settings.readTimeoutMillis=1111'
               - name: SPRING_CONFIG_IMPORT
-                value: 'env:THE_SPRING_CONFIG'
-                #value: 'classpath:timeout-settings.properties'
-                #value: 'optional:classpath:timeout-settings.properties'
+                value: "file:/workspace/configs/timeout-settings.properties"
             readinessProbe:
               httpGet:
                 port: 8080
@@ -81,9 +75,27 @@ items:
                 path: /actuator/health/liveness
             ports:
             - containerPort: 8080
+
             volumeMounts:
-            - name: log-volume
-              mountPath: /workspace/logs          
+            - name: pvc-consumer-service-logs
+              mountPath: "/workspace/logs"
+#            - name: empty-log-volume
+#              mountPath: "/data/logs"        
+            - name: pvc-consumer-service-configs
+              mountPath: "/workspace/configs"
+
           volumes:
-          - name: log-volume
-            emptyDir: {}
+          - name: pvc-consumer-service-logs
+            persistentVolumeClaim:
+              claimName: pvc-spring-logs
+          - name: pvc-consumer-service-configs
+            persistentVolumeClaim:
+              claimName: pvc-spring-configs
+#          - name: empty-log-volume
+#            emptyDir: {}          
+          - name: data-dir
+            hostPath:
+              path: /mnt/k8svolumes/data
+
+
+

@@ -2,7 +2,14 @@
 spring:
   config:
     import:
-    - classpath:timeout-settings.properties
+    - classpath:./config/timeout-settings.properties
+    #- optional:classpath:./config/*/
+    #- classpath:./config/*/
+    #- classpath:./config/timeout-settings.properties  Works    
+    #- optional:classpath:/config/
+    #- classpath:/config/
+    #- classpath:./config/
+    #- classpath:timeout-settings.properties  Works
 ---
 server:
   port: 8080
