@@ -2,7 +2,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: pv-spring-logs
+  name: pv-spring-configs-local
   labels:
     type: local
 spec:
@@ -12,4 +12,4 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/k8svolumes/data/logs"
+    path: "/mnt/k8svolumes/data/configs"

@@ -18,9 +18,9 @@ spec:
     image: nginx
     volumeMounts:
     - name: volume-logs
-      mountPath: /data/logs
+      mountPath: /data
   
   volumes:
   - name: volume-logs
     persistentVolumeClaim:
-      claimName: pvc-spring-logs
+      claimName: pvc-nfs-data

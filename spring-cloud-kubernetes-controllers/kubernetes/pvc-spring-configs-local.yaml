@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: pvc-spring-configs
+  name: pvc-spring-configs-local
 spec:
   storageClassName: spring-demo
   accessModes:

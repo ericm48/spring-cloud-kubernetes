@@ -38,23 +38,23 @@ items:
               runAsGroup: 1000
               fsGroup: 1000  # Ensure this matches runAsGroup              
 
-#          initContainers:
-#          - name: take-data-dir-ownership
-#            image: alpine:3
-#            # Give 'cnb:1000' user (id cnb is 1002) 1000 is eric permissions a mounted volume      
-#            command:
-#            - chown
-#            - -R
-#            - 1002:1000
-#            - /data
-#            command:
-#           - ls
-#            - -latr
-#            - /data            
+          initContainers:
+          - name: take-data-dir-ownership
+            image: alpine:3
+            # Give 'cnb:1000' user (id cnb is 1002) 1000 is eric permissions a mounted volume      
+            command:
+            - chown
+            - -R
+            - 1002:1000
+            - /data
+            command:
+            - ls
+            - -latr
+            - /data            
 
-#           volumeMounts:
-#           - name: data-dir
-#             mountPath: /data
+            volumeMounts:
+            - name: data-dir
+              mountPath: /data
 
           containers:
           - name: spring-cloud-kubernetes-consumer-service
@@ -88,15 +88,15 @@ items:
           volumes:
           - name: pvc-consumer-service-logs
             persistentVolumeClaim:
-              claimName: pvc-spring-logs
+              claimName: pvc-spring-logs-nfs
           - name: pvc-consumer-service-configs
             persistentVolumeClaim:
-              claimName: pvc-spring-configs
+              claimName: pvc-spring-configs-nfs
 #          - name: empty-log-volume
 #            emptyDir: {}          
           - name: data-dir
             hostPath:
-              path: /mnt/k8svolumes/data
+              path: /mnt/nfsshare/k8svolumes/data
 
 
 
