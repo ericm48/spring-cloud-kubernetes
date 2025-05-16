@@ -22,6 +22,7 @@ items:
     metadata:
       name: spring-cloud-kubernetes-consumer-service-deployment
     spec:
+      replicas: 1
       selector:
         matchLabels:
           app: spring-cloud-kubernetes-consumer-service
@@ -59,7 +60,7 @@ items:
           - name: spring-cloud-kubernetes-consumer-service
             image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.2-SNAPSHOT
             imagePullPolicy: IfNotPresent
-            
+
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
                 value: DEBUG                
