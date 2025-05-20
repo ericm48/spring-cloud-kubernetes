@@ -2,11 +2,19 @@
 spring:
   config:
     import:
-    - classpath:./config/game-settings.properties
     - classpath:./config/timeout-settings.properties
+    - classpath:./config/game-settings.properties
     - classpath:./config/ui-settings.properties
+#   - classpath:./config/*/  Does Not Work
 
-#     - classpath:./config/*/  Does Not Work
+  cloud:
+    kubernetes:
+      config:
+        name: config-as-properties
+        sources:
+        labels:
+          version: 1.0.0
+        
 ---
 server:
   port: 8080

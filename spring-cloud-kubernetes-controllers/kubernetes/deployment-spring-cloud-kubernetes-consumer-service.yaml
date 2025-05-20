@@ -65,7 +65,7 @@ items:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
                 value: DEBUG                
               - name: SPRING_CONFIG_IMPORT
-                value: "file:/workspace/configs/timeout-settings.properties"
+                value: "file:/workspace/configs/timeout-settings.properties" #, file:/workspace/configs/game-settings.properties, file:/workspace/configs/ui-settings.properties"
             readinessProbe:
               httpGet:
                 port: 8080

@@ -9,23 +9,28 @@ metadata:
   annotations:
     spring.cloud.kubernetes.configmap.apps: "spring-cloud-kubernetes-consumer-service, app-a, app-b"
 data:
+  timeout.settings: |-
+    #
+    # timeout.settings:
+    #
+    timeout.settings.connectionTimeoutMillis=3434
+    timeout.settings.readTimeoutMillis=3434
   games.settings: |-
     #
     # game.settings:
     #
-    enemies=BigZombies
-    lives=88
-    enemies.cheat=true
-    enemies.cheat.level=noGoodRotten
-    secret.code.passphrase=UUDDLRLRBABAS
-    secret.code.allowed=true
-    secret.code.lives=30
+    game.settings.lives=8888
+    game.settings.enemiesName=CF_BigZombies
+    game.settings.enemiesCheat=false
+    game.settings.enemiesCheatLevel=CF_NoGoodRotten
+    game.settings.secretCodePassphrase=CF_UUDDLRLRBABAS
+    game.settings.secretCodeAllowed=false
+    game.settings.secretCodeLives=30
   ui.settings: |-
     #
     # ui.settings
     #
-    color.good=purple
-    color.bad=yellow
-    allow.textmode=true
-    how.nice.to.look=fairlyNice
-
+    ui.settings.colorGood=CF_purple
+    ui.settings.colorBad=CF_yellow
+    ui.settings.allowTextMode=false
+    ui.settings.howNiceToLook=CF_fairlyNice
