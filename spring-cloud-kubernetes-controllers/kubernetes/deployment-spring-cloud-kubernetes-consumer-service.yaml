@@ -16,7 +16,6 @@ items:
       selector:
         app: spring-cloud-kubernetes-consumer-service
       type: ClusterIP
-
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -32,7 +31,6 @@ items:
             app: spring-cloud-kubernetes-consumer-service
         spec:
           serviceAccount: spring-cloud-kubernetes-consumer-service
-
           securityContext:
               runAsUser: 1002
               runAsGroup: 1000
@@ -60,10 +58,11 @@ items:
           - name: spring-cloud-kubernetes-consumer-service
             image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.2-SNAPSHOT
             imagePullPolicy: IfNotPresent
-
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
-                value: DEBUG                
+                value: DEBUG
+              - name: LOGGING_LEVEL_COM_ERIC                
+                value: DEBUG
               - name: SPRING_CONFIG_IMPORT
                 value: "file:/workspace/configs/timeout-settings.properties" #, file:/workspace/configs/game-settings.properties, file:/workspace/configs/ui-settings.properties"
             readinessProbe:
