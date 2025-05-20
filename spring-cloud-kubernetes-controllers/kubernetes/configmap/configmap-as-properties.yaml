@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: the-config
+  name: config-as-properties
   labels:
     version: 1.0.0
     spring.cloud.kubernetes.config: "true"
@@ -13,7 +13,7 @@ data:
     #
     # game.properties:
     #
-    enemies=aliens
+    enemies=BigZombies
     lives=88
     enemies.cheat=true
     enemies.cheat.level=noGoodRotten

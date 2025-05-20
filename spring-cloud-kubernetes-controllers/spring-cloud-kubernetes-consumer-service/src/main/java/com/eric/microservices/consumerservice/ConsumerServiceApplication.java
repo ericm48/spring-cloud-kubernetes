@@ -20,14 +20,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.eric.microservices.config.ConfigProperties;
+import com.eric.microservices.config.ConfigAsPropertiesTimeOuts;
 
 /**
  * @author Eric Manley
  */
 
 @SpringBootApplication
-@EnableConfigurationProperties(ConfigProperties.class)
+@EnableConfigurationProperties(ConfigAsPropertiesTimeOuts.class)
+
 public class ConsumerServiceApplication {
 
 	public static void main(String[] args) {

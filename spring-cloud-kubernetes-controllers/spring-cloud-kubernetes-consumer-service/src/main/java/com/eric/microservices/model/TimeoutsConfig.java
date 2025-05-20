@@ -24,7 +24,7 @@ import lombok.ToString;
 @Getter
 @Setter
 
-public class TimeoutConfig {
+public class TimeoutsConfig {
 
 	private int connectionTimeoutMillis;
 	private int readTimeoutMillis;

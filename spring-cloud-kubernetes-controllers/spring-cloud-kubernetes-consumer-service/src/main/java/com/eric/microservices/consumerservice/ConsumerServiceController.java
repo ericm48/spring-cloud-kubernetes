@@ -1,13 +1,12 @@
 package com.eric.microservices.consumerservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eric.microservices.config.ConfigProperties;
-import com.eric.microservices.model.TimeoutConfig;
+import com.eric.microservices.config.ConfigAsPropertiesTimeOuts;
+import com.eric.microservices.model.TimeoutsConfig;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,35 +19,34 @@ import lombok.extern.slf4j.Slf4j;
 public class ConsumerServiceController {
 
 	@Autowired
-	private ConfigProperties configProperties;
+	private ConfigAsPropertiesTimeOuts configAsPropertiesTimeOuts;
 
+	@GetMapping("/get-config/timeouts")
+	public ResponseEntity<TimeoutsConfig> getTimeoutsConfiguration(){
 
-	@GetMapping("/get-config")
-	public ResponseEntity<TimeoutConfig> getTimeoutConfiguration(){
+		ResponseEntity<TimeoutsConfig> returnValue = null;
 
-		ResponseEntity<TimeoutConfig> returnValue = null;
+		log.debug("ConfigConsumerController.getTimeoutsConfiguration() Begins...");
 
-		log.debug("ConfigConsumerController.getTimeoutConfiguration() Begins...");
+		TimeoutsConfig timeoutsConfig = new TimeoutsConfig();
 
-		TimeoutConfig timeoutConfig = new TimeoutConfig();
-
-		if (configProperties != null )
+		if (configAsPropertiesTimeOuts != null )
 		{
-			timeoutConfig.setConnectionTimeoutMillis(configProperties.getConnectionTimeoutMillis());
-			timeoutConfig.setReadTimeoutMillis(configProperties.getReadTimeoutMillis());
+			timeoutsConfig.setConnectionTimeoutMillis(configAsPropertiesTimeOuts.getConnectionTimeoutMillis());
+			timeoutsConfig.setReadTimeoutMillis(configAsPropertiesTimeOuts.getReadTimeoutMillis());
 			
-			log.info("Retrieving TimeoutConfig [{}]", timeoutConfig);
+			log.info("Retrieving TimeoutConfig [{}]", timeoutsConfig);
 		}
 		else
 		{
 			log.error("*** TimeoutConfig is NULL!!!!");
 		}
 
-		returnValue = ResponseEntity.ok(timeoutConfig);
+		returnValue = ResponseEntity.ok(timeoutsConfig);
 
-		log.debug("ConfigConsumerController.getTimeoutConfiguration() returnValue: " + returnValue);		
+		log.debug("ConfigConsumerController.getTimeoutsConfiguration() returnValue: " + returnValue);		
 
-		log.debug("ConfigConsumerController.getTimeoutConfiguration() Ends...");		
+		log.debug("ConfigConsumerController.getTimeoutsConfiguration() Ends...");		
 
 		return (returnValue);
 	}
