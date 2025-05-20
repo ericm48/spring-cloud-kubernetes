@@ -2,7 +2,11 @@
 spring:
   config:
     import:
+    - classpath:./config/game-settings.properties
     - classpath:./config/timeout-settings.properties
+    - classpath:./config/ui-settings.properties
+
+#     - classpath:./config/*/  Does Not Work
 ---
 server:
   port: 8080

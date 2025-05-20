@@ -5,8 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eric.microservices.config.ConfigAsPropertiesTimeOuts;
-import com.eric.microservices.model.TimeoutsConfig;
+import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
+import com.eric.microservices.config.ConfigAsYamlGame;
+import com.eric.microservices.config.ConfigAsYamlUI;
+import com.eric.microservices.model.GameConfig;
+import com.eric.microservices.model.TimeoutConfig;
+import com.eric.microservices.model.UIConfig;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,21 +23,27 @@ import lombok.extern.slf4j.Slf4j;
 public class ConsumerServiceController {
 
 	@Autowired
-	private ConfigAsPropertiesTimeOuts configAsPropertiesTimeOuts;
+	private ConfigAsPropertiesTimeOut configAsPropertiesTimeOut;
 
-	@GetMapping("/get-config/timeouts")
-	public ResponseEntity<TimeoutsConfig> getTimeoutsConfiguration(){
+	@Autowired
+	private ConfigAsYamlGame configAsYamlGame;
 
-		ResponseEntity<TimeoutsConfig> returnValue = null;
+	@Autowired
+	private ConfigAsYamlUI configAsYamlUI;
 
-		log.debug("ConfigConsumerController.getTimeoutsConfiguration() Begins...");
+	@GetMapping("/get-config/timeout")
+	public ResponseEntity<TimeoutConfig> getTimeoutsConfiguration(){
 
-		TimeoutsConfig timeoutsConfig = new TimeoutsConfig();
+		ResponseEntity<TimeoutConfig> returnValue = null;
 
-		if (configAsPropertiesTimeOuts != null )
+		log.debug("ConfigConsumerController.getTimeoutConfiguration() Begins...");
+
+		TimeoutConfig timeoutsConfig = new TimeoutConfig();
+
+		if (configAsPropertiesTimeOut != null )
 		{
-			timeoutsConfig.setConnectionTimeoutMillis(configAsPropertiesTimeOuts.getConnectionTimeoutMillis());
-			timeoutsConfig.setReadTimeoutMillis(configAsPropertiesTimeOuts.getReadTimeoutMillis());
+			timeoutsConfig.setConnectionTimeoutMillis(configAsPropertiesTimeOut.getConnectionTimeoutMillis());
+			timeoutsConfig.setReadTimeoutMillis(configAsPropertiesTimeOut.getReadTimeoutMillis());
 			
 			log.info("Retrieving TimeoutConfig [{}]", timeoutsConfig);
 		}
@@ -44,11 +54,79 @@ public class ConsumerServiceController {
 
 		returnValue = ResponseEntity.ok(timeoutsConfig);
 
-		log.debug("ConfigConsumerController.getTimeoutsConfiguration() returnValue: " + returnValue);		
+		log.debug("ConfigConsumerController.getTimeoutConfiguration() returnValue: " + returnValue);		
 
-		log.debug("ConfigConsumerController.getTimeoutsConfiguration() Ends...");		
+		log.debug("ConfigConsumerController.getTimeoutConfiguration() Ends...");		
 
 		return (returnValue);
 	}
+
+	@GetMapping("/get-config/game")
+	public ResponseEntity<GameConfig> getGameConfiguration(){
+
+		ResponseEntity<GameConfig> returnValue = null;
+
+		log.debug("ConfigConsumerController.getGameConfiguration() Begins...");
+
+		GameConfig gameConfig = new GameConfig();
+
+		if (configAsYamlGame != null )
+		{
+			gameConfig.setLives(configAsYamlGame.getLives());
+			gameConfig.setEnemiesName(configAsYamlGame.getEnemiesName());
+			gameConfig.setEnemiesCheatLevel(configAsYamlGame.getEnemiesCheatLevel());
+			gameConfig.setSecretCodePassphrase(configAsYamlGame.getSecretCodePassphrase());
+			gameConfig.setSecretCodeAllowed(configAsYamlGame.isSecretCodeAllowed());
+			gameConfig.setSecretCodeLives(configAsYamlGame.getSecretCodeLives());
+			
+			log.info("Retrieving gameConfig [{}]", gameConfig);
+		}
+		else
+		{
+			log.error("*** GameConfig is NULL!!!!");
+		}
+
+		returnValue = ResponseEntity.ok(gameConfig);
+
+		log.debug("ConfigConsumerController.getGameConfiguration() returnValue: " + returnValue);		
+
+		log.debug("ConfigConsumerController.getGameConfiguration() Ends...");		
+
+		return (returnValue);
+	}
+
+	@GetMapping("/get-config/ui")
+	public ResponseEntity<UIConfig> getUIConfiguration(){
+
+		ResponseEntity<UIConfig> returnValue = null;
+
+		log.debug("ConfigConsumerController.getUIConfiguration() Begins...");
+
+		UIConfig uiConfig = new UIConfig();
+
+		if (configAsYamlUI != null )
+		{
+			uiConfig.setColorGood(configAsYamlUI.getColorGood());
+			uiConfig.setColorBad(configAsYamlUI.getColorBad());			
+			uiConfig.setAllowTextMode(configAsYamlUI.isAllowTextMode());			
+			uiConfig.setHowNiceToLook(configAsYamlUI.getHowNiceToLook());			
+
+			
+			log.info("Retrieving uiConfig [{}]", uiConfig);
+		}
+		else
+		{
+			log.error("*** uiConfig is NULL!!!!");
+		}
+
+		returnValue = ResponseEntity.ok(uiConfig);
+
+		log.debug("ConfigConsumerController.getUIConfiguration() returnValue: " + returnValue);		
+
+		log.debug("ConfigConsumerController.getUIConfiguration() Ends...");		
+
+		return (returnValue);
+	}
+
 
 }

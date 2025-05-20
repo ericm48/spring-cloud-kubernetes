@@ -19,15 +19,16 @@ package com.eric.microservices.consumerservice;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-
-import com.eric.microservices.config.ConfigAsPropertiesTimeOuts;
-
+import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
+import com.eric.microservices.config.ConfigAsYamlGame;
+import com.eric.microservices.config.ConfigAsYamlUI;
 /**
  * @author Eric Manley
  */
 
 @SpringBootApplication
-@EnableConfigurationProperties(ConfigAsPropertiesTimeOuts.class)
+
+@EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
 
 public class ConsumerServiceApplication {
 

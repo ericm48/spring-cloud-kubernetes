@@ -9,9 +9,9 @@ metadata:
   annotations:
     spring.cloud.kubernetes.configmap.apps: "spring-cloud-kubernetes-consumer-service, app-a, app-b"
 data:
-  games.properties: |-
+  games.settings: |-
     #
-    # game.properties:
+    # game.settings:
     #
     enemies=BigZombies
     lives=88
@@ -20,9 +20,9 @@ data:
     secret.code.passphrase=UUDDLRLRBABAS
     secret.code.allowed=true
     secret.code.lives=30
-  ui.properties: |-
+  ui.settings: |-
     #
-    # ui.properties
+    # ui.settings
     #
     color.good=purple
     color.bad=yellow

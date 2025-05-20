@@ -26,6 +26,7 @@
     <logger name="org.springframework.retry" level="DEBUG" />    
     -->
     
+    <logger name="org.springframework.beans" level="DEBUG" />    
     <logger name="com.eric" level="DEBUG" />
 
     <root level="INFO">

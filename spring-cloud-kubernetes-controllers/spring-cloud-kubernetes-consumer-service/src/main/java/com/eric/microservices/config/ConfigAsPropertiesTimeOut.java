@@ -14,7 +14,7 @@ import lombok.ToString;
 @Configuration
 @ConfigurationProperties(prefix = "timeout.settings")
              
-public class ConfigAsPropertiesTimeOuts {
+public class ConfigAsPropertiesTimeOut {
 
 	private Integer connectionTimeoutMillis;
 	private Integer readTimeoutMillis;
