@@ -2,13 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
 	<parent>
 		<artifactId>spring-cloud-kubernetes-controllers</artifactId>
 		<groupId>org.springframework.cloud</groupId>
+		<relativePath>../../spring-cloud-kubernetes-controllers/</relativePath>					
 		<version>3.3.0-SNAPSHOT</version>
 	</parent>
+
+
+		<!--
+		<relativePath>../../EricParentAsset/projects/eric-project-parent/</relativePath>			
+		<version>3.2.1</version>
+		<version>3.3.0-SNAPSHOT</version>
+		-->
+
+
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
 	<version>3.3.2-SNAPSHOT</version>
 	
@@ -38,7 +51,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>		
 		</dependency>
 
 		<dependency>
@@ -53,8 +66,9 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>	
 		</dependency>
+
 
 		<!--
 			Spring: Base
@@ -79,15 +93,19 @@
 		<!--
 			Spring: K8s
 		-->
+
+		<!--
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
 		</dependency>
 
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes-fabric8-config</artifactId>
 		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -115,12 +133,14 @@
 			<artifactId>wiremock-standalone</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!--
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-kubernetes-test-support</artifactId>
 			<scope>test</scope>
 		</dependency>
+		-->
 	</dependencies>
-
 	
 </project>
