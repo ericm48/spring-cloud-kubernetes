@@ -6,18 +6,18 @@ items:
     kind: ServiceAccount
     metadata:
       labels:
-        app: spring-cloud-kubernetes-discoveryserver
-      name: spring-cloud-kubernetes-discoveryserver
+        app: spring-cloud-kubernetes-configserver
+      name: spring-cloud-kubernetes-configserver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
       labels:
-        app: spring-cloud-kubernetes-discoveryserver
-      name: spring-cloud-kubernetes-discoveryserver:view
+        app: spring-cloud-kubernetes-configserver
+      name: spring-cloud-kubernetes-configserver:view
     roleRef:
       kind: Role
       apiGroup: rbac.authorization.k8s.io
       name: namespace-reader
     subjects:
       - kind: ServiceAccount
-        name: spring-cloud-kubernetes-discoveryserver
+        name: spring-cloud-kubernetes-configserver

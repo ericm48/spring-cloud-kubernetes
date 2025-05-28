@@ -66,7 +66,7 @@ items:
               - name: LOGGING_LEVEL_COM_ERIC                
                 value: DEBUG
               - name: SPRING_CONFIG_IMPORT
-                value: "file:/workspace/configs/timeout-settings.properties" #, file:/workspace/configs/game-settings.properties, file:/workspace/configs/ui-settings.properties"
+                value: "file:/workspace/configs/timeout-settings.properties,file:/workspace/configs/game-settings.properties,file:/workspace/configs/ui-settings.properties"
             readinessProbe:
               httpGet:
                 port: 8080
@@ -81,8 +81,6 @@ items:
             volumeMounts:
             - name: pvc-consumer-service-logs
               mountPath: "/workspace/logs"
-#            - name: empty-log-volume
-#              mountPath: "/data/logs"        
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
 
@@ -93,11 +91,14 @@ items:
           - name: pvc-consumer-service-configs
             persistentVolumeClaim:
               claimName: pvc-spring-configs-nfs
+
+#          - name: pvc-consumer-service-logs
+#            emptyDir: {}
+#          - name: pvc-consumer-service-configs
+#            emptyDir: {}
 #          - name: empty-log-volume
-#            emptyDir: {}          
+#            emptyDir: {}
+          
           - name: data-dir
             hostPath:
               path: /mnt/nfsshare/k8svolumes/data
-
-
-
