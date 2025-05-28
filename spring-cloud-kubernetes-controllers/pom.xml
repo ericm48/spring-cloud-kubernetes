@@ -4,20 +4,24 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 
+	<!-- 
+		For Isolation
+
 	<parent>
 	  <groupId>org.springframework.boot</groupId>
 	  <artifactId>spring-boot-starter-parent</artifactId>
 	  <version>3.4.3</version>
 	</parent>
-	
 
-	<!--
+	-->
+	
+	<!-- Original
+	-->
 	<parent>
 		<groupId>org.springframework.cloud</groupId>		
 		<artifactId>spring-cloud-kubernetes</artifactId>
 		<version>3.2.1</version>
 	</parent>
-	-->
 
 	<!--
 		<version>3.2.1</version>
@@ -29,7 +33,7 @@
 
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-controllers</artifactId>
-	<version>3.3.0-SNAPSHOT</version>
+	<version>3.3.2-SNAPSHOT</version>
 
 	<modules>
 		<module>spring-cloud-kubernetes-configuration-watcher</module>
