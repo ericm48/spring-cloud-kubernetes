@@ -4,20 +4,27 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 
+<!-- 
+		For Isolation and Yes, you cannot do clean install on this pom.xml it will fail.
+		However, it provides (because child is relative path), the necessary versions,
+		and profiles.
+
 	<parent>
 	  <groupId>org.springframework.boot</groupId>
 	  <artifactId>spring-boot-starter-parent</artifactId>
 	  <version>3.4.3</version>
 	</parent>
-	
+	-->	
 
-	<!--
+	<!-- Original [ was 3.3.0-SNAPSHOT ], sticking with 3.2.1 fer now.
+	-->
+
 	<parent>
 		<groupId>org.springframework.cloud</groupId>		
 		<artifactId>spring-cloud-kubernetes</artifactId>
 		<version>3.2.1</version>
 	</parent>
-	-->
+
 
 	<!--
 		<version>3.2.1</version>
