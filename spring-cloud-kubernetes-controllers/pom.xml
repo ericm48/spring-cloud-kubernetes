@@ -5,15 +5,17 @@
 
 
 	<!-- 
-		For Isolation
-
+		For Isolation and Yes, you cannot do clean install on this pom.xml it will fail.
+		However, it provides (because child is relative path), the necessary versions,
+		and profiles.
+	-->
+	
 	<parent>
 	  <groupId>org.springframework.boot</groupId>
 	  <artifactId>spring-boot-starter-parent</artifactId>
 	  <version>3.4.3</version>
 	</parent>
 
-	-->
 	
 	<!-- Original
 	-->
