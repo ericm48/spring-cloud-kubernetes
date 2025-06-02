@@ -9,11 +9,13 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>spring-cloud-kubernetes-discoveryserver</artifactId>
+	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
+	<version>3.3.2-SNAPSHOT</version>
 
 	<properties>
 		<docker.registry.organization>springcloud</docker.registry.organization>
 		<plexus-archiver.version>4.10.0</plexus-archiver.version>
+  		<skip.checkstyle>true</skip.checkstyle>		
 	</properties>
 
 	<dependencies>
@@ -29,6 +31,14 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<optional>true</optional>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -52,6 +62,9 @@
 	</dependencies>
 
 	<profiles>
+
+		<!--
+
 		<profile>
 			<id>dockerpush</id>
 			<build>
@@ -91,6 +104,10 @@
 				<env.IMAGE>springcloud/${project.artifactId}:${project.version}</env.IMAGE>
 			</properties>
 		</profile>
+
+		-->
+		
 	</profiles>
+
 
 </project>

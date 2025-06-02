@@ -92,6 +92,8 @@
 
 	<profiles>		
 
+
+		<!--
 		<profile>
 			<id>spring</id>
 			<repositories>
@@ -153,7 +155,8 @@
 				</pluginRepository>
 			</pluginRepositories>
 		</profile>
-
+		-->
+		
 		<profile>
 				<id>build-jar</id>
 				<activation>
