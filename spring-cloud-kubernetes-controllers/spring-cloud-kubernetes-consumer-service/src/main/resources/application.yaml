@@ -1,8 +1,23 @@
+---
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+---
+spring:
+  config:
+    import:
+    - classpath:./config/timeout-settings.properties
+    - classpath:./config/game-settings.properties
+    - classpath:./config/ui-settings.properties
+#   - classpath:./config/*/  Does Not Work
+---
 server:
   port: 8761
 
 # needed to disable the publication of InstanceRegisteredEvent
 # which in case of discovery server would not be needed.
+---
 spring:
   cloud:
     discovery:

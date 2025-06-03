@@ -67,14 +67,14 @@ items:
                 value: DEBUG
               - name: SPRING_CONFIG_IMPORT
                 value: "file:/workspace/configs/timeout-settings.properties,file:/workspace/configs/game-settings.properties,file:/workspace/configs/ui-settings.properties"
-            # readinessProbe:
-            #   httpGet:
-            #     port: 8080
-            #     path: /actuator/health/readiness
-            # livenessProbe:
-            #   httpGet:
-            #     port: 8080
-            #     path: /actuator/health/liveness
+            readinessProbe:
+              httpGet:
+                port: 8080
+                path: /actuator/health/readiness
+            livenessProbe:
+              httpGet:
+                port: 8080
+                path: /actuator/health/liveness
             ports:
             - containerPort: 8080
 

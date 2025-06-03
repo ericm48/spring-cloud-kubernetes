@@ -18,13 +18,21 @@ package org.springframework.cloud.kubernetes.discoveryserver;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
+import com.eric.microservices.config.ConfigAsYamlGame;
+import com.eric.microservices.config.ConfigAsYamlUI;
 
 /**
  * @author Ryan Baxter
  */
 @SpringBootApplication
 @EnableScheduling
+
+@EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
+
 public class DiscoveryServerApplication {
 
 	public static void main(String[] args) {
