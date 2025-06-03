@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
-	<version>3.3.2-SNAPSHOT</version>
+	<version>3.3.3-SNAPSHOT</version>
 
 	<properties>
 		<docker.registry.organization>springcloud</docker.registry.organization>
@@ -106,7 +106,7 @@
 		</profile>
 
 		-->
-		
+
 	</profiles>
 
 

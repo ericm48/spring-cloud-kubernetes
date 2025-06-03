@@ -274,7 +274,10 @@
 	</reporting>
 
 	<profiles>
+
+		<!--
 		<profile>
+
 			<id>spring</id>
 			<repositories>
 				<repository>
@@ -335,6 +338,8 @@
 				</pluginRepository>
 			</pluginRepositories>
 		</profile>
+		-->
+		
 		<profile>
 			<id>release</id>
 			<build>
