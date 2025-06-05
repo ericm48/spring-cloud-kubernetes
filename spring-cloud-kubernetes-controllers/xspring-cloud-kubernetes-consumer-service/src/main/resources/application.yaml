@@ -3,8 +3,12 @@ spring:
   main:
     allow-bean-definition-overriding: true
 
----
-spring:
+  cloud:
+    kubernetes:
+      health:
+        allow:
+          enabled: false
+
   config:
     import:
     - classpath:./config/timeout-settings.properties
