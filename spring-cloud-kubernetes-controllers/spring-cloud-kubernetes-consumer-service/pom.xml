@@ -2,35 +2,109 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
 	<parent>
 		<artifactId>spring-cloud-kubernetes-controllers</artifactId>
 		<groupId>org.springframework.cloud</groupId>
+		<relativePath>../../spring-cloud-kubernetes-controllers/</relativePath>					
 		<version>3.3.0-SNAPSHOT</version>
 	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
 
+	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
-	<version>3.3.3-SNAPSHOT</version>
-
+	<version>3.3.2-SNAPSHOT</version>
+	
 	<properties>
 		<docker.registry.organization>springcloud</docker.registry.organization>
 		<plexus-archiver.version>4.10.0</plexus-archiver.version>
-  		<skip.checkstyle>true</skip.checkstyle>		
+  		<skip.checkstyle>true</skip.checkstyle>
+
+		<!--
+		<spring-cloud.version>2020.0.0</spring-cloud.version>		
+		<spring-cloud.version>2020.0.0</spring-cloud.version>						
+		-->
+
+
 	</properties>
 
 	<dependencies>
+	
+		<!--
+			Spring: Starters
+		-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
+			<version>${spring-boot-starter.version}</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${spring-boot-starter.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+			<version>${spring-boot-starter.version}</version>			
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>${spring-boot-starter.version}</version>
+		</dependency>		
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>${spring-cloud.version}</version>
+		</dependency>
+
+
+		<!--
+			Spring: Base
+		-->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>${spring-boot-starter.version}</version>		
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.retry</groupId>
+			<artifactId>spring-retry</artifactId>
+			<version>2.0.12</version>			
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>6.2.7</version>
+		</dependency>
+
+		<!--
+			Spring: K8s
+		-->
+
+		<!--
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes-fabric8-config</artifactId>
+		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -39,75 +113,36 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!--
+			Testing Things
+		-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring-boot-starter.version}</version>			
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
+			<version>3.7.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.wiremock</groupId>
 			<artifactId>wiremock-standalone</artifactId>
+			<version>3.13.0</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!--
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-kubernetes-test-support</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-
-	<profiles>
-
-		<!--
-
-		<profile>
-			<id>dockerpush</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.spotify</groupId>
-						<artifactId>dockerfile-maven-plugin</artifactId>
-						<version>1.4.13</version>
-						<configuration>
-							<repository>${docker.registry.organization}/${artifactId}</repository>
-							<tag>${project.version}</tag>
-							<username>${env.DOCKER_HUB_USERNAME}</username>
-							<password>${env.DOCKER_HUB_PASSWORD}</password>
-							<build>
-								<noCache>true</noCache>
-							</build>
-						</configuration>
-						<dependencies>
-							<dependency>
-								<groupId>org.codehaus.plexus</groupId>
-								<artifactId>plexus-archiver</artifactId>
-								<version>${plexus-archiver.version}</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>imagename</id>
-			<activation>
-				<property>
-					<name>!env.IMAGE</name>
-				</property>
-			</activation>
-			<properties>
-				<env.IMAGE>springcloud/${project.artifactId}:${project.version}</env.IMAGE>
-			</properties>
-		</profile>
-
 		-->
-
-	</profiles>
-
-
+	</dependencies>
+	
 </project>

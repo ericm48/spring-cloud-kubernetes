@@ -1,20 +1,29 @@
-server:
-  port: 8761
-
-# needed to disable the publication of InstanceRegisteredEvent
-# which in case of discovery server would not be needed.
+---
 spring:
+  main:
+    allow-bean-definition-overriding: true
+
   cloud:
-    discovery:
-      client:
-        health-indicator:
+    kubernetes:
+      health:
+        allow:
           enabled: false
 
+  config:
+    import:
+    - classpath:./config/timeout-settings.properties
+    - classpath:./config/game-settings.properties
+    - classpath:./config/ui-settings.properties
+#   - classpath:./config/*/  Does Not Work
+
+---
+server:
+  port: 8080
 management:
   endpoint:
-    health:
-      group:
-        liveness:
-          include: livenessState, kubernetes
-        readiness:
-          include: readinessState, kubernetes
+      health:
+        show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
