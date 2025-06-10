@@ -31,6 +31,8 @@ import com.eric.microservices.config.ConfigAsYamlUI;
 @SpringBootApplication
 @EnableScheduling
 
+@EnableKubernetesDiscoveryClient
+
 @EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
 
 public class DiscoveryServerApplication {
