@@ -1,21 +1,15 @@
 ---
 spring:
-  main:
-    allow-bean-definition-overriding: true
-
-  cloud:    
-    kubernetes:
-      health:
-        allow:
-          enabled: false
-
   config:
     import:
     - classpath:./config/timeout-settings.properties
-    - classpath:./config/game-settings.properties
-    - classpath:./config/ui-settings.properties
-#   - classpath:./config/*/  Does Not Work
-
+    #- optional:classpath:./config/*/
+    #- classpath:./config/*/
+    #- classpath:./config/timeout-settings.properties  Works    
+    #- optional:classpath:/config/
+    #- classpath:/config/
+    #- classpath:./config/
+    #- classpath:timeout-settings.properties  Works
 ---
 server:
   port: 8080
