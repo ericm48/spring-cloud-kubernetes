@@ -1,16 +1,12 @@
 <configuration>
 
-<<<<<<< HEAD
     <define name="hostname" 
         class="ch.qos.logback.core.property.CanonicalHostNamePropertyDefiner"/>
-=======
-    <contextName>${HOSTNAME}</contextName>
->>>>>>> c2619df53be0f823758a611079cc0432d02671fa
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%contextName] [%thread] %-5level %logger{5} - %msg %n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [${hostname}] [%thread] %-5level %logger{5} - %msg %n</pattern>        
         </encoder>
     </appender>
 
@@ -18,7 +14,7 @@
         
         <file>logs/${HOSTNAME}-consumer-service.log</file>
         <encoder>
-           <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%contextName] [%thread] %-5level %logger{5} - %msg %n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [${hostname}] [%thread] %-5level %logger{5} - %msg %n</pattern>        
         </encoder>
     </appender>
 
@@ -29,12 +25,9 @@
     <!--
     <logger name="org.springframework.beans" level="DEBUG" />
     <logger name="org.springframework.retry" level="DEBUG" />    
+    <logger name="org.springframework" level="DEBUG" />
     -->
-<<<<<<< HEAD
    
-=======
-    
->>>>>>> c2619df53be0f823758a611079cc0432d02671fa
     <logger name="com.eric" level="DEBUG" />
 
     <root level="INFO">
