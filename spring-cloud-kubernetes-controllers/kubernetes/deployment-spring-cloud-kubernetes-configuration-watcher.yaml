@@ -16,6 +16,34 @@ items:
       selector:
         app: spring-cloud-kubernetes-configuration-watcher
       type: ClusterIP
+  - apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      labels:
+        app: spring-cloud-kubernetes-configuration-watcher
+      name: spring-cloud-kubernetes-configuration-watcher
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: RoleBinding
+    metadata:
+      labels:
+        app: spring-cloud-kubernetes-configuration-watcher
+      name: spring-cloud-kubernetes-configuration-watcher:view
+    roleRef:
+      kind: Role
+      apiGroup: rbac.authorization.k8s.io
+      name: namespace-reader
+    subjects:
+      - kind: ServiceAccount
+        name: spring-cloud-kubernetes-configuration-watcher
+  - apiVersion: rbac.authorization.k8s.io/v1
+    kind: Role
+    metadata:
+      namespace: default
+      name: namespace-reader
+    rules:
+      - apiGroups: ["", "extensions", "apps"]
+        resources: ["configmaps", "pods", "services", "endpoints", "secrets"]
+        verbs: ["get", "list", "watch"]
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -42,9 +70,7 @@ items:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_KUBERNETES_COMMONS_CONFIG_RELOAD
                 value: DEBUG
               - name: SPRING_CLOUD_KUBERNETES_CONFIGURATION_WATCHER_REFRESHDELAY
-                value: "10" 
-              - name: SPRING_CONFIG_IMPORT
-                value: "file:/workspace/configs/timeout-settings.properties"              
+                value: "10"                
             readinessProbe:
               httpGet:
                 port: 8888
@@ -55,15 +81,3 @@ items:
                 path: /actuator/health/liveness
             ports:
             - containerPort: 8888
-
-            volumeMounts:
-            - name: pvc-consumer-service-configs
-              mountPath: "/workspace/configs"
-
-          volumes:
-          - name: pvc-consumer-service-logs
-            persistentVolumeClaim:
-              claimName: pvc-spring-logs-nfs
-          - name: pvc-consumer-service-configs
-            persistentVolumeClaim:
-              claimName: pvc-spring-configs-nfs

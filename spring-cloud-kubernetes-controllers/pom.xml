@@ -3,172 +3,33 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-
-<!-- 
-		For Isolation and Yes, you cannot do clean install on this pom.xml it will fail.
-		However, it provides (because child is relative path), the necessary versions,
-		and profiles.
-
 	<parent>
-	  <groupId>org.springframework.boot</groupId>
-	  <artifactId>spring-boot-starter-parent</artifactId>
-	  <version>3.4.3</version>
-	</parent>
-	-->	
-
-	<!-- Original [ was 3.3.0-SNAPSHOT ], sticking with 3.2.1 fer now.
-	-->
-
-	<parent>
-		<groupId>org.springframework.cloud</groupId>		
 		<artifactId>spring-cloud-kubernetes</artifactId>
-		<version>3.2.1</version>
+		<groupId>org.springframework.cloud</groupId>		
+		<version>3.3.0-SNAPSHOT</version>		
 	</parent>
-
-
-	<!--
-		<version>3.2.1</version>
-		<version>3.3.0-SNAPSHOT</version>
-	-->
 	
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 
-	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-controllers</artifactId>
-	<version>3.3.0-SNAPSHOT</version>
+	
 
 	<modules>
 		<module>spring-cloud-kubernetes-configuration-watcher</module>
 		<module>spring-cloud-kubernetes-discoveryserver</module>
 		<module>spring-cloud-kubernetes-configserver</module>
-		
 		<module>spring-cloud-kubernetes-consumer-service</module>
 	</modules>
 
-	<properties>
-		<!-- in our github actions run, we save surefire/failsafe reports in a path that looks like this: -->
-		<!-- surefire-report/1/... , where "1" (and other numbers like this) are the index of the github matrix -->
-		<!-- where this is running. When outside the github actions, for example locally/jenkins, we will simply store -->
-		<!-- the reports in a directory: "surefire-reports/..." -->
-		<surefire-reports-directory>surefire-reports</surefire-reports-directory>
-		<failsafe-reports-directory>failsafe-reports</failsafe-reports-directory>
-
-		<!-- Dependency Versions -->
-		<mockito-inline.version>4.8.1</mockito-inline.version>
-
-		<!--
-		<spring-cloud-commons.version>4.3.0-SNAPSHOT</spring-cloud-commons.version>		
-		<spring-cloud-config.version>4.3.0-SNAPSHOT</spring-cloud-config.version>
-		<spring-cloud-bus.version>4.3.0-SNAPSHOT</spring-cloud-bus.version>
-		<spring-cloud-contract.version>4.3.0-SNAPSHOT</spring-cloud-contract.version>
-		-->
-		
-		<!--
-			Gotta Watch This ONE!
-			Was:
-			<spring-cloud-kubernetes.version>3.2.2-SNAPSHOT</spring-cloud-kubernetes.version>	
-					
-		-->	
-		
-		<spring-cloud-kubernetes.version>3.2.1</spring-cloud-kubernetes.version>
-		<spring-cloud.version>4.2.1</spring-cloud.version>
-		
-		<spring-cloud-commons.version>4.2.1</spring-cloud-commons.version>
-		<spring-cloud-config.version>4.2.1</spring-cloud-config.version>
-		<spring-cloud-bus.version>4.2.1</spring-cloud-bus.version>
-		<spring-cloud-contract.version>4.2.1</spring-cloud-contract.version>
-		
-		<spring-boot-starter.version>3.4.3</spring-boot-starter.version>
-		
- 		<maven.javadoc.skip>true</maven.javadoc.skip>
-
-		<!--
-		<maven-checkstyle-plugin.failsOnError>true</maven-checkstyle-plugin.failsOnError>
-		<maven-checkstyle-plugin.failsOnViolation>true</maven-checkstyle-plugin.failsOnViolation>
-		<maven-checkstyle-plugin.includeTestSourceDirectory>true</maven-checkstyle-plugin.includeTestSourceDirectory>
-		-->
-		
-	</properties>
-
-
-	<profiles>		
-
-
-		<!--
-		<profile>
-			<id>spring</id>
-			<repositories>
-				<repository>
-					<id>spring-snapshots</id>
-					<name>Spring Snapshots</name>
-					<url>https://repo.spring.io/snapshot</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-				</repository>
-				<repository>
-					<id>spring-milestones</id>
-					<name>Spring Milestones</name>
-					<url>https://repo.spring.io/milestone</url>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</repository>
-				<repository>
-					<id>spring-releases</id>
-					<name>Spring Releases</name>
-					<url>https://repo.spring.io/release</url>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>spring-snapshots</id>
-					<name>Spring Snapshots</name>
-					<url>https://repo.spring.io/snapshot</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-				</pluginRepository>
-				<pluginRepository>
-					<id>spring-milestones</id>
-					<name>Spring Milestones</name>
-					<url>https://repo.spring.io/milestone</url>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</pluginRepository>
-				<pluginRepository>
-					<id>spring-releases</id>
-					<name>Spring Releases</name>
-					<url>https://repo.spring.io/release</url>
-					<snapshots>
-						<enabled>false</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
-		</profile>
-		-->
+	<profiles>
 		
 		<profile>
 				<id>build-jar</id>
+
 				<activation>
         	<activeByDefault>true</activeByDefault>
         </activation>
-        
-        <properties>
-            <theProfile>build-jar</theProfile>
-        </properties>        
-        
         
 				<build>
 					<plugins>
@@ -179,32 +40,12 @@
 							<version>3.2.1</version>
 			
 							<executions>
-
-								<!--  NOT WORKING
-								
-								<execution>
-									<id>compile</id>
-									<goals>
-										<goal>jar</goal>
-									</goals>
-									
-                  <configuration>
-                      <tasks>
-                          <echo>CurrentActiveProfile: ${theProfile}</echo>
-                      </tasks>
-                  </configuration>									
-                  
-								</execution>
-								-->
-							
 								<execution>
 									<id>attach-sources</id>
 									<goals>
 										<goal>jar-no-fork</goal>
 									</goals>
-                  
 								</execution>
-								
 							</executions>
 						</plugin>
 			
@@ -219,11 +60,6 @@
 				<activation>
         	<activeByDefault>false</activeByDefault>
         </activation>
-
-        <properties>
-            <theProfile>build-img</theProfile>
-        </properties>        
-				
 				
 				<build>
 					<plugins>

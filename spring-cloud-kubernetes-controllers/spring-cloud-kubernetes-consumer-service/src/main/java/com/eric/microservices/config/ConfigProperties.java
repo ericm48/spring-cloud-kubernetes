@@ -11,10 +11,12 @@ import lombok.ToString;
 @Getter
 @ToString
 
+//@EnableRetry
+
 @Configuration
 @ConfigurationProperties(prefix = "timeout.settings")
-             
-public class ConfigAsPropertiesTimeOut {
+
+public class ConfigProperties {
 
 	private Integer connectionTimeoutMillis;
 	private Integer readTimeoutMillis;

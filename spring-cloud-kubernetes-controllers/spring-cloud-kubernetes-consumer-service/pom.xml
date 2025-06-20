@@ -7,7 +7,6 @@
 	<parent>
 		<artifactId>spring-cloud-kubernetes-controllers</artifactId>
 		<groupId>org.springframework.cloud</groupId>
-		<relativePath>../../spring-cloud-kubernetes-controllers/</relativePath>					
 		<version>3.3.0-SNAPSHOT</version>
 	</parent>
 	-->
@@ -15,13 +14,16 @@
 	<parent>
 		<groupId>com.eric.common</groupId>		
 		<artifactId>eric-spring-boot-starter-parent</artifactId>
+<<<<<<< HEAD
 		<version>1.0.4-RELEASE</version>
+=======
+		<version>1.0.2-RELEASE</version>
+>>>>>>> c2619df53be0f823758a611079cc0432d02671fa
 		<relativePath /> 
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
 	<version>3.3.6-SNAPSHOT</version>
 	
@@ -42,64 +44,65 @@
 
 	<dependencies>
 	
-		<!--
-			Spring: Starters
-		-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
-			<version>${spring-boot-starter.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>${spring-boot-starter.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-logging</artifactId>
-			<version>${spring-boot-starter.version}</version>			
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-			<version>${spring-boot-starter.version}</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>		
 
+		<!-- 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
+<<<<<<< HEAD
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
 			<version>${spring-cloud-starter.version}</version>
+=======
+			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
+>>>>>>> c2619df53be0f823758a611079cc0432d02671fa
 		</dependency>
-
-
-		<!--
-			Spring: Base
 		-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
-			<version>${spring-boot-starter.version}</version>		
 			<optional>true</optional>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
-			<version>2.0.12</version>			
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
-			<version>6.2.7</version>
 		</dependency>
 
+<<<<<<< HEAD
+=======
+		<!--
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-dependencies</artifactId>
+			<version>${spring-cloud.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+		-->
+
+>>>>>>> c2619df53be0f823758a611079cc0432d02671fa
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -114,13 +117,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot-starter.version}</version>			
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
-			<version>3.7.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -129,7 +130,18 @@
 			<version>3.13.0</version>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 		
+=======
+		<!--
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-kubernetes-test-support</artifactId>
+			<scope>test</scope>
+		</dependency>
+		-->
+>>>>>>> c2619df53be0f823758a611079cc0432d02671fa
 	</dependencies>
+
 	
 </project>

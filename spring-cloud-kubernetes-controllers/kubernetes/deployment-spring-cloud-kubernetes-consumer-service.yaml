@@ -16,6 +16,7 @@ items:
       selector:
         app: spring-cloud-kubernetes-consumer-service
       type: ClusterIP
+
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -31,6 +32,7 @@ items:
             app: spring-cloud-kubernetes-consumer-service
         spec:
           serviceAccount: spring-cloud-kubernetes-consumer-service
+
           securityContext:
               runAsUser: 1002
               runAsGroup: 1000
@@ -58,29 +60,37 @@ items:
           - name: spring-cloud-kubernetes-consumer-service
             image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.6-SNAPSHOT
             imagePullPolicy: IfNotPresent
+
             env:
+<<<<<<< HEAD
               #- name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
               #  value: DEBUG
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS             
                 value: DEBUG
               - name: LOGGING_LEVEL_COM_ERIC                
                 value: DEBUG
+=======
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
+                value: DEBUG                
+>>>>>>> c2619df53be0f823758a611079cc0432d02671fa
               - name: SPRING_CONFIG_IMPORT
-                value: "file:/workspace/configs/timeout-settings.properties,file:/workspace/configs/game-settings.properties,file:/workspace/configs/ui-settings.properties"
-            # readinessProbe:
-            #   httpGet:
-            #     port: 8080
-            #     path: /actuator/health/readiness
-            # livenessProbe:
-            #   httpGet:
-            #     port: 8080
-            #     path: /actuator/health/liveness
+                value: "file:/workspace/configs/timeout-settings.properties"
+            readinessProbe:
+              httpGet:
+                port: 8080
+                path: /actuator/health/readiness
+            livenessProbe:
+              httpGet:
+                port: 8080
+                path: /actuator/health/liveness
             ports:
             - containerPort: 8080
 
             volumeMounts:
             - name: pvc-consumer-service-logs
               mountPath: "/workspace/logs"
+#            - name: empty-log-volume
+#              mountPath: "/data/logs"        
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
 
@@ -91,14 +101,11 @@ items:
           - name: pvc-consumer-service-configs
             persistentVolumeClaim:
               claimName: pvc-spring-configs-nfs
-
-#          - name: pvc-consumer-service-logs
-#            emptyDir: {}
-#          - name: pvc-consumer-service-configs
-#            emptyDir: {}
 #          - name: empty-log-volume
-#            emptyDir: {}
-          
+#            emptyDir: {}          
           - name: data-dir
             hostPath:
               path: /mnt/nfsshare/k8svolumes/data
+
+
+
