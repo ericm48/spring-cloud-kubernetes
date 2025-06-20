@@ -3,30 +3,40 @@
 		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-
+	<!--
 	<parent>
 		<artifactId>spring-cloud-kubernetes-controllers</artifactId>
 		<groupId>org.springframework.cloud</groupId>
 		<relativePath>../../spring-cloud-kubernetes-controllers/</relativePath>					
 		<version>3.3.0-SNAPSHOT</version>
 	</parent>
+	-->
+
+	<parent>
+		<groupId>com.eric.common</groupId>		
+		<artifactId>eric-spring-boot-starter-parent</artifactId>
+		<version>1.0.4-RELEASE</version>
+		<relativePath /> 
+	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
-	<version>3.3.2-SNAPSHOT</version>
+	<version>3.3.6-SNAPSHOT</version>
 	
 	<properties>
+		<!--
 		<docker.registry.organization>springcloud</docker.registry.organization>
+		-->
+
 		<plexus-archiver.version>4.10.0</plexus-archiver.version>
   		<skip.checkstyle>true</skip.checkstyle>
 
 		<!--
-		<spring-cloud.version>2020.0.0</spring-cloud.version>		
-		<spring-cloud.version>2020.0.0</spring-cloud.version>						
+		<spring-boot-starter.version>3.4.3</spring-boot-starter.version>
+		<spring-cloud.version>4.2.1</spring-cloud.version>								
 		-->
-
 
 	</properties>
 
@@ -63,7 +73,7 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
-			<version>${spring-cloud.version}</version>
+			<version>${spring-cloud-starter.version}</version>
 		</dependency>
 
 
@@ -89,22 +99,6 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>6.2.7</version>
 		</dependency>
-
-		<!--
-			Spring: K8s
-		-->
-
-		<!--
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-kubernetes-client</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-kubernetes-fabric8-config</artifactId>
-		</dependency>
-		-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -136,13 +130,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!--
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-kubernetes-test-support</artifactId>
-			<scope>test</scope>
-		</dependency>
-		-->
 	</dependencies>
 	
 </project>
