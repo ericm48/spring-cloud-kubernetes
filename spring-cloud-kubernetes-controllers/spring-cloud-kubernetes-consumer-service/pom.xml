@@ -27,7 +27,10 @@
 	</properties>
 
 	<dependencies>
-	
+
+		<!-- 
+			Spring Boot Things 
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webflux</artifactId>
@@ -51,6 +54,22 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- 
+			Spring Things FIGG'R OUT CONFIG-SERVER STUFF.. missing /refresh
+		-->
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bootstrap</artifactId>
+			<version>${spring-cloud-starter.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+			<version>${spring-cloud-starter.version}</version>
+    	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.retry</groupId>

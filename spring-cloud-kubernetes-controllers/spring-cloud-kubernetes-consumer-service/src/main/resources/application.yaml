@@ -5,13 +5,6 @@ spring:
     - classpath:./config/timeout-settings.properties
     - classpath:./config/game-settings.properties
     - classpath:./config/ui-settings.properties    
-    #- optional:classpath:./config/*/
-    #- classpath:./config/*/
-    #- classpath:./config/timeout-settings.properties  Works    
-    #- optional:classpath:/config/
-    #- classpath:/config/
-    #- classpath:./config/
-    #- classpath:timeout-settings.properties  Works
 ---
 server:
   port: 8080
