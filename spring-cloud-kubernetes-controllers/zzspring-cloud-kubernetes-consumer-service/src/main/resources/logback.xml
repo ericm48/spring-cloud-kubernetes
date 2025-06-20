@@ -1,5 +1,9 @@
 <configuration>
 
+    <!--
+    <contextName>${HOSTNAME}</contextName>
+    -->
+
     <define name="hostname" 
         class="ch.qos.logback.core.property.CanonicalHostNamePropertyDefiner"/>
 
@@ -27,7 +31,8 @@
     <logger name="org.springframework.retry" level="DEBUG" />    
     <logger name="org.springframework" level="DEBUG" />
     -->
-
+    
+    <logger name="org.springframework.beans" level="DEBUG" />
     <logger name="com.eric" level="DEBUG" />
 
     <root level="INFO">

@@ -14,26 +14,31 @@
  * limitations under the License.
  */
 
-package com.eric.microservices.consumerservice;
+package org.springframework.cloud.kubernetes.discoveryserver;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
 import com.eric.microservices.config.ConfigAsYamlGame;
 import com.eric.microservices.config.ConfigAsYamlUI;
 
 /**
- * @author Eric Manley
+ * @author Ryan Baxter
  */
-
 @SpringBootApplication
+@EnableScheduling
+
+@EnableKubernetesDiscoveryClient
+
 @EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
-public class ConsumerServiceApplication {
+
+public class DiscoveryServerApplication {
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(ConsumerServiceApplication.class).run(args);
+		new SpringApplicationBuilder(DiscoveryServerApplication.class).run(args);
 	}
 
 }

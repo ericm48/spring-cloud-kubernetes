@@ -3,6 +3,8 @@ spring:
   config:
     import:
     - classpath:./config/timeout-settings.properties
+    - classpath:./config/game-settings.properties
+    - classpath:./config/ui-settings.properties    
     #- optional:classpath:./config/*/
     #- classpath:./config/*/
     #- classpath:./config/timeout-settings.properties  Works    
