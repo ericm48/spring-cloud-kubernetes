@@ -58,23 +58,18 @@ items:
 
           containers:
           - name: spring-cloud-kubernetes-consumer-service
-            image: springcloud/spring-cloud-kubernetes-consumer-service:3.3.6-SNAPSHOT
+            image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.6-SNAPSHOT
             imagePullPolicy: IfNotPresent
 
             env:
-<<<<<<< HEAD
-              #- name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
-              #  value: DEBUG
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS             
+                value: DEBUG
                 value: DEBUG
               - name: LOGGING_LEVEL_COM_ERIC                
                 value: DEBUG
-=======
-              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS                
-                value: DEBUG                
->>>>>>> c2619df53be0f823758a611079cc0432d02671fa
               - name: SPRING_CONFIG_IMPORT
-                value: "file:/workspace/configs/timeout-settings.properties"
+                value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties"
             readinessProbe:
               httpGet:
                 port: 8080
@@ -89,10 +84,10 @@ items:
             volumeMounts:
             - name: pvc-consumer-service-logs
               mountPath: "/workspace/logs"
-#            - name: empty-log-volume
-#              mountPath: "/data/logs"        
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
+#            - name: empty-log-volume
+#              mountPath: "/data/logs"
 
           volumes:
           - name: pvc-consumer-service-logs

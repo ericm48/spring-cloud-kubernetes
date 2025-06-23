@@ -1,6 +1,7 @@
 package com.eric.microservices.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.ToString;
 @ToString
 
 @Configuration
+@RefreshScope
 @ConfigurationProperties(prefix = "timeout.settings")
              
 public class ConfigAsPropertiesTimeOut {

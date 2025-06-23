@@ -11,10 +11,9 @@ import lombok.ToString;
 @Getter
 @ToString
 
-//@EnableRetry
-
-@Configuration
-@ConfigurationProperties(prefix = "timeout.settings")
+// @EnableRetry
+// @Configuration
+// @ConfigurationProperties(prefix = "timeout.settings")
 
 public class ConfigProperties {
 

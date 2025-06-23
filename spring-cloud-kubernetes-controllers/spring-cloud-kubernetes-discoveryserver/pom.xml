@@ -7,9 +7,10 @@
 		<groupId>org.springframework.cloud</groupId>
 		<version>3.3.0-SNAPSHOT</version>
 	</parent>
-	<modelVersion>4.0.0</modelVersion>
 
+	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-cloud-kubernetes-discoveryserver</artifactId>
+	<version>3.3.6-SNAPSHOT</version>
 
 	<properties>
 		<docker.registry.organization>springcloud</docker.registry.organization>

@@ -11,6 +11,10 @@ spring:
           enabled: false
 
 management:
+  endpoints:
+      web:
+        exposure:
+          include: "*"
   endpoint:
     health:
       group:

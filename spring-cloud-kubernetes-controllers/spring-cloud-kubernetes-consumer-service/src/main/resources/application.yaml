@@ -4,7 +4,8 @@ spring:
     import:
     - classpath:./config/timeout-settings.properties
     - classpath:./config/game-settings.properties
-    - classpath:./config/ui-settings.properties    
+    - classpath:./config/ui-settings.properties
+
 ---
 server:
   port: 8080
