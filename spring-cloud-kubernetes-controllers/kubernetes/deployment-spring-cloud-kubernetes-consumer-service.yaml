@@ -50,8 +50,7 @@ items:
             command:
             - ls
             - -latr
-            - /data            
-
+            - /data
             volumeMounts:
             - name: data-dir
               mountPath: /data
@@ -63,8 +62,8 @@ items:
 
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
-              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS             
                 value: DEBUG
+              - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_BEANS
                 value: DEBUG
               - name: LOGGING_LEVEL_COM_ERIC                
                 value: DEBUG

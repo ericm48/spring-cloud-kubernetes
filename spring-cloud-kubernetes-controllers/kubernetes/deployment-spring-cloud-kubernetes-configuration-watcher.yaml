@@ -43,13 +43,13 @@ items:
                 value: DEBUG
               - name: SPRING_CLOUD_KUBERNETES_CONFIGURATION_WATCHER_REFRESHDELAY
                 value: "10"                
-            readinessProbe:
-              httpGet:
-                port: 8888
-                path: /actuator/health/readiness
-            livenessProbe:
-              httpGet:
-                port: 8888
-                path: /actuator/health/liveness
             ports:
             - containerPort: 8888
+#            readinessProbe:
+#              httpGet:
+#                port: 8888
+#                path: /actuator/health/readiness
+#            livenessProbe:
+#              httpGet:
+#                port: 8888
+#                path: /actuator/health/liveness

@@ -34,6 +34,8 @@ items:
           - name: spring-cloud-kubernetes-discoveryserver
             image: ericm24/spring-cloud-kubernetes-discoveryserver:3.3.6-SNAPSHOT 
             imagePullPolicy: IfNotPresent
+            ports:
+            - containerPort: 8761
 #            readinessProbe:
 #              httpGet:
 #                port: 8761
@@ -42,5 +44,3 @@ items:
 #              httpGet:
 #                port: 8761
 #                path: /actuator/health/liveness
-#            ports:
-#            - containerPort: 8761

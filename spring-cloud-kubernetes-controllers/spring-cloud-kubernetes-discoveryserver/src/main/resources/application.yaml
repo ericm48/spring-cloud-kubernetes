@@ -6,7 +6,7 @@ server:
 spring:
   cloud:
     discovery:
-      client:
+      client:      
         health-indicator:
           enabled: false
 
