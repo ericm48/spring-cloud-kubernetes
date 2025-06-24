@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
@@ -19,10 +18,11 @@ import lombok.ToString;
 public class ConfigAsSecretVolumeFile {
 
     private String userId1;
-
     private String password1;
 
-    @Value("${vault.secret.mount.path:/dsg-platform/secrets}") // Default mount path
+    // Must have Vault Stuff setup, (ie Vault URI & Token)
+    //@Value("${vault.secret.mount.path:/dsg-platform/secrets}") // Default mount path
+    
     private String secretMountPath;
 
     public String readUserId1Secret() throws IOException {

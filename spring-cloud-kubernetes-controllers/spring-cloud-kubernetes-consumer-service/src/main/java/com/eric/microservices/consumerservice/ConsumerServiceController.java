@@ -141,7 +141,7 @@ public class ConsumerServiceController {
 
 		SecretConfig secretConfig = new SecretConfig();
 
-		if (configAsYamlUI != null )
+		if (configAsSecretVolumeFile != null )
 		{
 			secretConfig.setUserId1(configAsSecretVolumeFile.getUserId1());
 			secretConfig.setPassWord1(configAsSecretVolumeFile.getPassword1());
@@ -150,7 +150,7 @@ public class ConsumerServiceController {
 		}
 		else
 		{
-			log.error("*** uiConfig is NULL!!!!");
+			log.error("*** secretConfig is NULL!!!!");
 		}
 
 		returnValue = ResponseEntity.ok(secretConfig);
