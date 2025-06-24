@@ -6,9 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
+import com.eric.microservices.config.ConfigAsSecretVolumeFile;
 import com.eric.microservices.config.ConfigAsYamlGame;
 import com.eric.microservices.config.ConfigAsYamlUI;
 import com.eric.microservices.model.GameConfig;
+import com.eric.microservices.model.SecretConfig;
 import com.eric.microservices.model.TimeoutConfig;
 import com.eric.microservices.model.UIConfig;
 
@@ -30,6 +32,8 @@ public class ConsumerServiceController {
 
 	@Autowired
 	private ConfigAsYamlUI configAsYamlUI;
+
+	private ConfigAsSecretVolumeFile configAsSecretVolumeFile;
 
 	@GetMapping("/get-config/timeout")
 	public ResponseEntity<TimeoutConfig> getTimeoutsConfiguration(){
@@ -128,5 +132,34 @@ public class ConsumerServiceController {
 		return (returnValue);
 	}
 
+	@GetMapping("/get-config/secret")
+	public ResponseEntity<SecretConfig> getSecretConfiguration(){
+
+		ResponseEntity<SecretConfig> returnValue = null;
+
+		log.debug("ConfigConsumerController.getSecretConfiguration() Begins...");
+
+		SecretConfig secretConfig = new SecretConfig();
+
+		if (configAsYamlUI != null )
+		{
+			secretConfig.setUserId1(configAsSecretVolumeFile.getUserId1());
+			secretConfig.setPassWord1(configAsSecretVolumeFile.getPassword1());
+			
+			log.info("Retrieving secretConfig [{}]", secretConfig);
+		}
+		else
+		{
+			log.error("*** uiConfig is NULL!!!!");
+		}
+
+		returnValue = ResponseEntity.ok(secretConfig);
+
+		log.debug("ConfigConsumerController.getSecretConfiguration() returnValue: " + returnValue);		
+
+		log.debug("ConfigConsumerController.getSecretConfiguration() Ends...");		
+
+		return (returnValue);		
+	}
 
 }

@@ -13,7 +13,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
-	<version>3.3.6-SNAPSHOT</version>
+	<version>3.3.8-SNAPSHOT</version>
 	
 	<properties>
 		<!--
@@ -56,7 +56,7 @@
 		</dependency>
 
 		<!-- 
-			Spring Things FIGG'R OUT CONFIG-SERVER STUFF.. missing /refresh
+			Spring Cloud Things
 		-->
 
 		<dependency>
@@ -72,6 +72,16 @@
     	</dependency>
 
 		<dependency>
+        	<groupId>org.springframework.cloud</groupId>
+        	<artifactId>spring-cloud-starter-vault-config</artifactId>
+			<version>${spring-cloud-starter.version}</version>			
+    	</dependency>
+
+		<!-- 
+			Spring Base Things
+		-->
+
+		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
 		</dependency>
@@ -80,6 +90,10 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
 		</dependency>
+
+		<!-- 
+			Non-Spring Dependencies
+		-->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

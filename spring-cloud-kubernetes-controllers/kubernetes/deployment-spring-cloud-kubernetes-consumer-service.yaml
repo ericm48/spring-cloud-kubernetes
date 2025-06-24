@@ -57,7 +57,7 @@ items:
 
           containers:
           - name: spring-cloud-kubernetes-consumer-service
-            image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.6-SNAPSHOT
+            image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.8-SNAPSHOT
             imagePullPolicy: IfNotPresent
 
             env:
