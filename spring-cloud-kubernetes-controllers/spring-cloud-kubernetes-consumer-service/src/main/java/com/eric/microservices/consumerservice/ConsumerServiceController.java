@@ -1,14 +1,16 @@
 package com.eric.microservices.consumerservice;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
-import com.eric.microservices.config.ConfigAsSecretVolumeFile;
 import com.eric.microservices.config.ConfigAsYamlGame;
 import com.eric.microservices.config.ConfigAsYamlUI;
+import com.eric.microservices.config.SecretReaderService;
 import com.eric.microservices.model.GameConfig;
 import com.eric.microservices.model.SecretConfig;
 import com.eric.microservices.model.TimeoutConfig;
@@ -33,7 +35,8 @@ public class ConsumerServiceController {
 	@Autowired
 	private ConfigAsYamlUI configAsYamlUI;
 
-	private ConfigAsSecretVolumeFile configAsSecretVolumeFile;
+	@Autowired
+	private SecretReaderService secretReaderService;
 
 	@GetMapping("/get-config/timeout")
 	public ResponseEntity<TimeoutConfig> getTimeoutsConfiguration(){
@@ -141,12 +144,19 @@ public class ConsumerServiceController {
 
 		SecretConfig secretConfig = new SecretConfig();
 
-		if (configAsSecretVolumeFile != null )
+		if (secretReaderService != null )
 		{
-			secretConfig.setUserId1(configAsSecretVolumeFile.getUserId1());
-			secretConfig.setPassWord1(configAsSecretVolumeFile.getPassword1());
-			
-			log.info("Retrieving secretConfig [{}]", secretConfig);
+			try {
+
+				secretConfig.setUserId1(secretReaderService.getUserId1FromFile());
+				secretConfig.setPassWord1(secretReaderService.getPassword1FromFile());
+				
+				log.info("Retrieving secretConfig [{}]", secretConfig);
+			}
+			catch(IOException ioex)
+			{
+				log.error("IOException Encountered!! Msg: " + ioex.getMessage());	
+			}
 		}
 		else
 		{

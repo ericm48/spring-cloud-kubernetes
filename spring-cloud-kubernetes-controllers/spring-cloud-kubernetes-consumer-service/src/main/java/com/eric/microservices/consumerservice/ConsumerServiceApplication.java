@@ -19,6 +19,7 @@ package com.eric.microservices.consumerservice;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 
 import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
 import com.eric.microservices.config.ConfigAsYamlGame;
@@ -30,6 +31,10 @@ import com.eric.microservices.config.ConfigAsYamlUI;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
+
+@ComponentScan("com.eric")
+//@ComponentScan("com.eric.microservices.config")
+
 public class ConsumerServiceApplication {
 
 	public static void main(String[] args) {

@@ -69,22 +69,25 @@ items:
                 value: DEBUG
               - name: SPRING_CONFIG_IMPORT
                 value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties"
-            readinessProbe:
-              httpGet:
-                port: 8080
-                path: /actuator/health/readiness
-            livenessProbe:
-              httpGet:
-                port: 8080
-                path: /actuator/health/liveness
             ports:
             - containerPort: 8080
-
+#            readinessProbe:
+#              httpGet:
+#                port: 8080
+#                path: /actuator/health/readiness
+#            livenessProbe:
+#              httpGet:
+#                port: 8080
+#                path: /actuator/health/liveness
+ 
             volumeMounts:
             - name: pvc-consumer-service-logs
               mountPath: "/workspace/logs"
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
+            - name: config-volume-secret-both
+              mountPath: /dsg-platform/secrets
+
 #            - name: empty-log-volume
 #              mountPath: "/data/logs"
 
@@ -100,6 +103,10 @@ items:
           - name: data-dir
             hostPath:
               path: /mnt/nfsshare/k8svolumes/data
+          - name: config-volume-secret-both
+            configMap:
+              name: configmap-secrets-both
+
 
 
 

@@ -17,10 +17,14 @@ spec:
   - name: test-container-nginx
     image: nginx
     volumeMounts:
-    - name: volume-logs
+    - name: empty-log-volume
       mountPath: /data
+    - name: config-volume-secret-both
+      mountPath: /dsg-platform/secrets
   
   volumes:
-  - name: volume-logs
-    persistentVolumeClaim:
-      claimName: pvc-nfs-data
+  - name: empty-log-volume
+    emptyDir: {}    
+  - name: config-volume-secret-both
+    configMap:
+      name: configmap-secrets-both

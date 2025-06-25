@@ -58,7 +58,6 @@
 		<!-- 
 			Spring Cloud Things
 		-->
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bootstrap</artifactId>
@@ -71,18 +70,10 @@
 			<version>${spring-cloud-starter.version}</version>
     	</dependency>
 
-		<!--
-		<dependency>
-        	<groupId>org.springframework.cloud</groupId>
-        	<artifactId>spring-cloud-starter-vault-config</artifactId>
-			<version>${spring-cloud-starter.version}</version>			
-    	</dependency>
-		-->
 
 		<!-- 
 			Spring Base Things
 		-->
-
 		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
@@ -96,7 +87,6 @@
 		<!-- 
 			Non-Spring Dependencies
 		-->
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -107,7 +97,6 @@
 		<!--
 			Testing Things
 		-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
