@@ -59,7 +59,6 @@ items:
           - name: spring-cloud-kubernetes-consumer-service
             image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.8-SNAPSHOT
             imagePullPolicy: IfNotPresent
-
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
                 value: DEBUG
@@ -69,6 +68,10 @@ items:
                 value: DEBUG
               - name: SPRING_CONFIG_IMPORT
                 value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties"
+              - name: SCK_USERID
+                value: '/dsg-platform/secrets/TEST_ERIC_TEST_USERID1'
+              - name: SCK_PASSWORD
+                value: '/dsg-platform/secrets/TEST_ERIC_TEST_PASSWORD1'
             ports:
             - containerPort: 8080
 #            readinessProbe:
