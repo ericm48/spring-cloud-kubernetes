@@ -12,8 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class SecretReaderService {
 
+    // This is the path to the volume-file that has the userID.
+    // Example: '/x-platform/secrets/TEST_USERID1'
+
     @Value("${SCK_USERID}")
     private String filePathUserID;
+
+    // This is the path to the volume-file that has the passWord.
+    // Example: '/x-platform/secrets/TEST_PASSWORD1'
 
     @Value("${SCK_PASSWORD}")
     private String filePathPassword;
