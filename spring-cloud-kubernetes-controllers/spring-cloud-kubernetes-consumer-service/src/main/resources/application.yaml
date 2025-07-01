@@ -2,6 +2,8 @@
 spring:
   config:
     import:
+    - classpath:./config/userid2-settings.properties
+    - classpath:./config/password2-settings.properties
     - classpath:./config/timeout-settings.properties
     - classpath:./config/game-settings.properties
     - classpath:./config/ui-settings.properties

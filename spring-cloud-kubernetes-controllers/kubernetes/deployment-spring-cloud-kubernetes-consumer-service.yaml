@@ -105,15 +105,17 @@ items:
               claimName: pvc-spring-logs-nfs
           - name: pvc-consumer-service-configs
             persistentVolumeClaim:
-              claimName: pvc-spring-configs-nfs
-#          - name: empty-log-volume
-#            emptyDir: {}          
+              claimName: pvc-spring-configs-nfszz
           - name: data-dir
             hostPath:
               path: /mnt/nfsshare/k8svolumes/data
           - name: config-volume-secret-both
             configMap:
               name: configmap-secrets-both
+
+#          - name: empty-log-volume
+#            emptyDir: {}          
+
 
 
 

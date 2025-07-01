@@ -1,7 +1,9 @@
 package com.eric.microservices.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,13 +13,11 @@ import lombok.ToString;
 @Getter
 @ToString
 
-// @EnableRetry
-// @Configuration
-// @ConfigurationProperties(prefix = "timeout.settings")
+@Configuration
+@ConfigurationProperties(prefix = "userid2.settings") // Access a set of related secrets
+public class ConfigUserID2 {
 
-public class ConfigProperties {
-
-	private Integer connectionTimeoutMillis;
-	private Integer readTimeoutMillis;
+    private String value;
 
 }
+

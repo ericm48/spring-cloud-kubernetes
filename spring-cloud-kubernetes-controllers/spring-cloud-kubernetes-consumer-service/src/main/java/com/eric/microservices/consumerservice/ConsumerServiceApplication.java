@@ -24,16 +24,18 @@ import org.springframework.context.annotation.ComponentScan;
 import com.eric.microservices.config.ConfigAsPropertiesTimeOut;
 import com.eric.microservices.config.ConfigAsYamlGame;
 import com.eric.microservices.config.ConfigAsYamlUI;
+import com.eric.microservices.config.ConfigPassword2;
+import com.eric.microservices.config.ConfigUserID2;
 
 /**
  * @author Eric Manley
  */
 
 @SpringBootApplication
-@EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class })
+@EnableConfigurationProperties({ ConfigAsPropertiesTimeOut.class, ConfigAsYamlGame.class, ConfigAsYamlUI.class,
+		ConfigUserID2.class, ConfigPassword2.class })
 
 @ComponentScan("com.eric")
-//@ComponentScan("com.eric.microservices.config")
 
 public class ConsumerServiceApplication {
 

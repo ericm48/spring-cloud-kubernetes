@@ -135,7 +135,37 @@ public class ConsumerServiceController {
 		return (returnValue);
 	}
 
-	@GetMapping("/get-secret/from-file")
+	@GetMapping("/get-secret/from-evar")
+	public ResponseEntity<SecretConfig> getSecretFromEnvironmentVariable(){
+
+		ResponseEntity<SecretConfig> returnValue = null;
+
+		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() Begins...");
+
+		SecretConfig secretConfig = new SecretConfig();
+
+		if (secretReaderService != null )
+		{
+				secretConfig.setUserId(secretReaderService.getUserId1FromEnvironmentVariable());
+				secretConfig.setPassWord(secretReaderService.getPassword1EnvironmentVariable());
+				
+				log.info("ConfigConsumerController.getSecretFromEnvironmentVariable() Retrieving secretConfig [{}]", secretConfig);
+		}
+		else
+		{
+			log.error("ConfigConsumerController.getSecretFromEnvironmentVariable() ***ERROR-ENCOUNTERED*** secretReaderService is NULL!!!!");
+		}
+
+		returnValue = ResponseEntity.ok(secretConfig);
+
+		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() returnValue: " + returnValue);		
+
+		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() Ends...");		
+
+		return (returnValue);		
+	}
+
+	@GetMapping("/get-secret/from-file1")
 	public ResponseEntity<SecretConfig> getSecretFromFile(){
 
 		ResponseEntity<SecretConfig> returnValue = null;
@@ -148,8 +178,8 @@ public class ConsumerServiceController {
 		{
 			try {
 
-				secretConfig.setUserId1(secretReaderService.getUserId1FromFile());
-				secretConfig.setPassWord1(secretReaderService.getPassword1FromFile());
+				secretConfig.setUserId(secretReaderService.getUserId1FromFile());
+				secretConfig.setPassWord(secretReaderService.getPassword1FromFile());
 				
 				log.info("ConfigConsumerController.getSecretFromFile() Retrieving secretConfig [{}]", secretConfig);
 			}
@@ -172,34 +202,36 @@ public class ConsumerServiceController {
 		return (returnValue);		
 	}
 
-	@GetMapping("/get-secret/from-evar")
-	public ResponseEntity<SecretConfig> getSecretFromEnvironmentVariable(){
+	@GetMapping("/get-secret/from-file2")
+	public ResponseEntity<SecretConfig> getSecretFromFile2(){
 
 		ResponseEntity<SecretConfig> returnValue = null;
 
-		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() Begins...");
+		log.debug("ConfigConsumerController.getSecretFromFile2() Begins...");
 
 		SecretConfig secretConfig = new SecretConfig();
 
 		if (secretReaderService != null )
 		{
-				secretConfig.setUserId1(secretReaderService.getUserId1FromEnvironmentVariable());
-				secretConfig.setPassWord1(secretReaderService.getPassword1EnvironmentVariable());
-				
-				log.info("ConfigConsumerController.getSecretFromEnvironmentVariable() Retrieving secretConfig [{}]", secretConfig);
+
+			secretConfig.setUserId(secretReaderService.getUserId2FromFile());
+			secretConfig.setPassWord(secretReaderService.getPassword2FromFile());
+			
+			log.info("ConfigConsumerController.getSecretFromFile2() Retrieving secretConfig [{}]", secretConfig);
 		}
 		else
 		{
-			log.error("ConfigConsumerController.getSecretFromEnvironmentVariable() ***ERROR-ENCOUNTERED*** secretReaderService is NULL!!!!");
+			log.error("ConfigConsumerController.getSecretFromFile2() ***ERROR-ENCOUNTERED*** secretReaderService is NULL!!!!");
 		}
 
 		returnValue = ResponseEntity.ok(secretConfig);
 
-		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() returnValue: " + returnValue);		
+		log.debug("ConfigConsumerController.getSecretFromFile2() returnValue: " + returnValue);		
 
-		log.debug("ConfigConsumerController.getSecretFromEnvironmentVariable() Ends...");		
+		log.debug("ConfigConsumerController.getSecretFromFile2() Ends...");		
 
 		return (returnValue);		
 	}
+
 
 }

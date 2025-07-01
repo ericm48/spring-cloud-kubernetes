@@ -10,6 +10,6 @@ import lombok.ToString;
 @Setter
 
 public class SecretConfig {
-    private String userId1;
-    private String passWord1;    
+    private String userId;
+    private String passWord;    
 }
