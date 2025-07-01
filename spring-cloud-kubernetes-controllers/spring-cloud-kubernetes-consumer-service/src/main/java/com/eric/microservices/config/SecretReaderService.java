@@ -16,11 +16,6 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 public class SecretReaderService {
 
-
-    public void SecretReaderService()
-    {
-        
-    }
     // This is the path to the volume-file that has the userID.
     // Example: '/x-platform/secrets/TEST_USERID1'
 
