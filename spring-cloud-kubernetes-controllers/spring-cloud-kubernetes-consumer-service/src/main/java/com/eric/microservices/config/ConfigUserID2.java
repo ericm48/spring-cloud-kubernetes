@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString
 
 @Configuration
-@ConfigurationProperties(prefix = "userid2.settings") // Access a set of related secrets
+@ConfigurationProperties(prefix = "userid2.settings") 
 public class ConfigUserID2 {
 
     private String value;

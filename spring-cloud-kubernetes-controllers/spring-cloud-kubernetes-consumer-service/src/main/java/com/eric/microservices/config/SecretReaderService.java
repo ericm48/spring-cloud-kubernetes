@@ -40,8 +40,6 @@ public class SecretReaderService {
     @Autowired    
     private ConfigPassword2 configPassword2;    
 
-
-
     public String getUserId1FromFile() throws IOException {
 
         String returnValue = null;

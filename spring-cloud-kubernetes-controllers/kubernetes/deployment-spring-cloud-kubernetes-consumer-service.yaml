@@ -57,7 +57,7 @@ items:
 
           containers:
           - name: spring-cloud-kubernetes-consumer-service
-            image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.12-SNAPSHOT
+            image: ericm24/spring-cloud-kubernetes-consumer-service:3.3.14-SNAPSHOT
             imagePullPolicy: IfNotPresent
             env:
               - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD
@@ -67,7 +67,7 @@ items:
               - name: LOGGING_LEVEL_COM_ERIC                
                 value: DEBUG
               - name: SPRING_CONFIG_IMPORT
-                value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties"
+                value: "optional:file:/workspace/configs/timeout-settings.properties,optional:file:/workspace/configs/game-settings.properties,optional:file:/workspace/configs/ui-settings.properties,optional:file:/workspace/secrets/userid2-settings.properties,optional:file:/workspace/secrets/password2-settings.properties"
               - name: SCK_FILE_USERID
                 value: '/dsg-platform/secrets/TEST_ERIC_TEST_USERID1'
               - name: SCK_FILE_PASSWORD
@@ -93,6 +93,9 @@ items:
               mountPath: "/workspace/logs"
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
+
+
+
             - name: config-volume-secret-both
               mountPath: /dsg-platform/secrets
 

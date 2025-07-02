@@ -7,6 +7,8 @@ spring:
     - classpath:./config/timeout-settings.properties
     - classpath:./config/game-settings.properties
     - classpath:./config/ui-settings.properties
+    - classpath:./secrets/userid2-settings.properties
+    - classpath:./secrets/password2-settings.properties
 
 ---
 server:
