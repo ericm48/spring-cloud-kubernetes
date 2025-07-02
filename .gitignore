@@ -95,7 +95,6 @@ crashlytics-build.properties
 .classpath
 .factorypath
 .attach_pid*
-.vscode/
 .java-version
 *Dockerfile
 

@@ -93,8 +93,8 @@ items:
               mountPath: "/workspace/logs"
             - name: pvc-consumer-service-configs
               mountPath: "/workspace/configs"
-
-
+            - name: pvc-consumer-service-secrets
+              mountPath: "/workspace/secrets"
 
             - name: config-volume-secret-both
               mountPath: /dsg-platform/secrets
@@ -108,7 +108,11 @@ items:
               claimName: pvc-spring-logs-nfs
           - name: pvc-consumer-service-configs
             persistentVolumeClaim:
-              claimName: pvc-spring-configs-nfszz
+              claimName: pvc-spring-configs-nfs
+          - name: pvc-consumer-service-secrets
+            persistentVolumeClaim:
+              claimName: pvc-spring-secrets-nfs
+
           - name: data-dir
             hostPath:
               path: /mnt/nfsshare/k8svolumes/data
@@ -117,9 +121,4 @@ items:
               name: configmap-secrets-both
 
 #          - name: empty-log-volume
-#            emptyDir: {}          
-
-
-
-
-
+#            emptyDir: {}
