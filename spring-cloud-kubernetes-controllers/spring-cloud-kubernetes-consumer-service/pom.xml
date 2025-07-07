@@ -6,14 +6,14 @@
 	<parent>
 		<groupId>com.eric.common</groupId>		
 		<artifactId>eric-spring-boot-starter-parent</artifactId>
-		<version>1.0.4-RELEASE</version>
+		<version>1.0.6-RELEASE</version>
 		<relativePath /> 
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>spring-cloud-kubernetes-consumer-service</artifactId>
-	<version>3.3.14-SNAPSHOT</version>
+	<version>3.3.16-SNAPSHOT</version>
 	
 	<properties>
 		<!--
