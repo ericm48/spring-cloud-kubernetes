@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.eric.common</groupId>		
 		<artifactId>eric-spring-boot-starter-parent</artifactId>
-		<version>1.0.6-RELEASE</version>
+		<version>1.0.4-RELEASE</version>
 		<relativePath /> 
 	</parent>
 
